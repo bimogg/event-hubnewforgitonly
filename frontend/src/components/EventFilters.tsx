@@ -65,9 +65,12 @@ export function EventFilters({ value, onChange }: Props) {
           <label className="text-sm font-medium text-slate-600">{t("format")}</label>
           <select
             className="rounded-xl border border-slate-200 px-3 py-2 text-sm"
-            value={value.is_online ?? "all"}
+            value={value.is_online === undefined || value.is_online === "all" ? "all" : String(value.is_online)}
             onChange={(e) =>
-              onChange({ ...value, is_online: e.target.value === "all" ? "all" : e.target.value === "true" })
+              onChange({ 
+                ...value, 
+                is_online: e.target.value === "all" ? "all" : e.target.value === "true" 
+              })
             }
           >
             {onlineOptions.map((option) => (

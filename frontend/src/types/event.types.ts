@@ -1,4 +1,4 @@
-export type EventType = "hackathon" | "quest" | "tournament" | "seminar" | "other";
+export type EventType = "hackathon" | "quest" | "tournament" | "seminar" | "meetup" | "lecture" | "workshop" | "other";
 
 export interface Event {
   id: number;
