@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Logo</title>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="120"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Белый фон
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 400, 120);
+        
+        const centerX = 60;
+        const centerY = 60;
+        
+        // Концентрические овалы
+        const colors = ['#E5E5E5', '#CCCCCC', '#B3B3B3', '#999999', '#808080', '#666666', '#4D4D4D', '#333333'];
+        const sizes = [[45, 18], [40, 16], [35, 14], [30, 12], [25, 10], [20, 8], [15, 6], [12, 5]];
+        
+        for (let i = 0; i < sizes.length; i++) {
+            const [rx, ry] = sizes[i];
+            ctx.beginPath();
+            ctx.ellipse(centerX, centerY, rx, ry, 0, 0, 2 * Math.PI);
+            if (i === sizes.length - 1) {
+                ctx.fillStyle = '#000000';
+                ctx.fill();
+            } else {
+                ctx.strokeStyle = colors[i];
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+        }
+        
+        // Обрезка
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 400, 30);
+        ctx.fillRect(0, 90, 400, 120);
+        
+        // Текст
+        ctx.fillStyle = '#000000';
+        ctx.font = '24px Arial';
+        ctx.fillText('astana hub', 120, 60);
+        
+        // Сохраняем
+        const link = document.createElement('a');
+        link.download = 'astana-hub-logo.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+Построен бэкенд FastAPI (Python 3.11) c асинхронным стэком: SQLAlchemy 2.0 + asyncpg, Alembic миграции, Redis, JWT‑аутентификация, WebSocket‑чат, модульная архитектура (routers → services → repositories).
+Модели и таблицы: пользователи, профили, интересы/скиллы, команды (с участниками и открытыми позициями), события/регистрации, чаты/сообщения. Вся схема описана и мигрирована (alembic/versions/0001_initial.py).
+Функциональные модули бекенда
+
+Auth: регистрация, вход (OAuth2 password), refresh токены, роли (user, team_owner, organizer, admin), защищённые эндпоинты.
+Profiles: CRUD-профиль пользователя (имя, username, город, интересы, навыки, статус). Поиск по фильтрам.
+Events: создание/редактирование/поиск событий, регистрация участников, список участников, панель организатора (просмотр своих событий и регистраций).
+Teams: создание команд, участники, роли, открытые позиции, поиск по событиям.
+Chats: личные чаты, командные/ивент чаты, WebSocket‑стриминг сообщений.
+Organizer dashboard: управление событиями, регистрациями, рассылками (через существующие сервисы).
+Инфраструктура: Dockerfile + docker-compose (Postgres, Redis, backend), pre-commit (Black, Ruff).
+Фронтенд (frontend/)
+
+Vite + React 18 + TypeScript + TailwindCSS, строгий tsconfig, eslint/tsc.
+i18n: i18next + react-i18next + LanguageDetector; локали kz/ru/en; LanguageSwitcher в layout.
+Event Catalog: фильтры, поиск, сортировки, карточки с бейджами и ссылками.
+Event details: регистрация через JoinEventButton с локальными состояниями (idle/loading/success/error), список участников, кнопка перехода к командам события.
+Мои события (/my/events) + AI‑matching (/my/events/:id): mock алгоритм рекомендаций команд (учёт скиллов/уровня).
+Команды: /events/:id/teams (список), /teams/new, /teams/:id (инфо, участники, позиции, редактирование через модал), /teams/:id/chat (mock websocket), подбор участников.
+Чат-модуль: личные чаты (/chat/:id, API), кнопка “Write message” на профиле пользователя, общие компоненты “bubbles”.
+Event recommendations (/events/recommend) — mock AI, подобранные события и объяснение.
+Профиль пользователя (/profiles/:id).
+Сервисы (axios) для событий, команд, чатов, профилей, matching логика отдельно.
+Инструкции
+
+Бэкенд: python -m uvicorn app.main:app --reload (после alembic upgrade head).
+Фронтенд: cd frontend && npm install && npm run dev (нужен VITE_API_URL).
+Docker: docker-compose up --build.
+Репозиторий GitHub: git remote add origin git@github.com:AzharZu/event-hub.git, git push -u origin main.
+
+
+

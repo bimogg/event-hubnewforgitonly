@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="300" height="100">
+  <defs>
+    <style>
+      .logo-circle { fill: none; stroke: #000; }
+      .logo-text { font-family: Arial, sans-serif; font-size: 24px; fill: #000; font-weight: normal; }
+    </style>
+  </defs>
+  
+  <!-- Логотип - концентрические овалы -->
+  <g transform="translate(50, 50)">
+    <!-- Внешние кольца (светлые) -->
+    <ellipse class="logo-circle" cx="0" cy="0" rx="45" ry="18" stroke="#E0E0E0" stroke-width="1.5"/>
+    <ellipse class="logo-circle" cx="0" cy="0" rx="40" ry="16" stroke="#C0C0C0" stroke-width="1.5"/>
+    <ellipse class="logo-circle" cx="0" cy="0" rx="35" ry="14" stroke="#A0A0A0" stroke-width="1.5"/>
+    <ellipse class="logo-circle" cx="0" cy="0" rx="30" ry="12" stroke="#808080" stroke-width="1.5"/>
+    <ellipse class="logo-circle" cx="0" cy="0" rx="25" ry="10" stroke="#606060" stroke-width="1.5"/>
+    <ellipse class="logo-circle" cx="0" cy="0" rx="20" ry="8" stroke="#404040" stroke-width="1.5"/>
+    <ellipse class="logo-circle" cx="0" cy="0" rx="15" ry="6" stroke="#202020" stroke-width="1.5"/>
+    
+    <!-- Центральный черный овал -->
+    <ellipse cx="0" cy="0" rx="12" ry="5" fill="#000000"/>
+    
+    <!-- Обрезка верхней части -->
+    <rect x="-50" y="-50" width="100" height="30" fill="white"/>
+    <!-- Обрезка нижней части -->
+    <rect x="-50" y="20" width="100" height="30" fill="white"/>
+  </g>
+  
+  <!-- Текст "astana hub" -->
+  <text x="120" y="60" class="logo-text">astana hub</text>
+</svg>
